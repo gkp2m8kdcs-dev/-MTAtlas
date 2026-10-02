@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0B0F1A" />
+<title>Support — MTAtlas</title>
+<meta name="description" content="MTAtlas support. Get help with accounts, transactions, investments, budgets, export, backup and receipts." />
+<link rel="icon" type="image/png" href="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=MTAtlas%20app%20icon%20minimal%20finance%20logo%20dark%20background&image_size=square" />
+<style>
+    :root {
+        --bg: #0B0F1A;
+        --bg-2: #111728;
+        --card: #161D2F;
+        --line: #222B40;
+        --text: #F2F4F8;
+        --muted: #9AA3B5;
+        --accent: #6FA8FF;
+        --accent-2: #8C7CFF;
+        --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: radial-gradient(1200px 600px at 20% -10%, #1B2540 0%, transparent 60%),
+                radial-gradient(900px 500px at 100% 10%, #1A1A3A 0%, transparent 55%),
+                var(--bg);
+        color: var(--text); -webkit-font-smoothing: antialiased;
+        line-height: 1.7;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .nav {
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(11, 15, 26, .85);
+        backdrop-filter: saturate(160%) blur(14px);
+        border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+        max-width: 1120px; margin: 0 auto;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 14px 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
+    .brand-mark {
+        width: 30px; height: 30px; border-radius: 8px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: grid; place-items: center; color: #0B0F1A; font-weight: 800;
+    }
+    .nav-links a { color: var(--muted); margin-left: 22px; font-size: 14px; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    main { max-width: 880px; margin: 0 auto; padding: 56px 24px 80px; }
+    h1 {
+        font-size: clamp(30px, 4vw, 44px);
+        letter-spacing: -.02em; margin: 0 0 8px;
+    }
+    .meta { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+    h2 {
+        font-size: 22px; margin: 36px 0 10px; letter-spacing: -.01em;
+    }
+    p { color: var(--text); margin: 10px 0; }
+    p.lead { color: var(--muted); font-size: 17px; }
+    ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    li::marker { color: var(--accent); }
+
+    .contact {
+        background: linear-gradient(135deg, rgba(111,168,255,.12), rgba(140,124,255,.12));
+        border: 1px solid rgba(111,168,255,.25);
+        border-radius: var(--radius); padding: 24px 26px;
+        display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        margin-top: 18px;
+    }
+    .contact h3 { margin: 0 0 6px; font-size: 18px; }
+    .contact p { margin: 0; color: var(--muted); }
+    .btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #0B0F1A;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+    details {
+        background: var(--card); border: 1px solid var(--line);
+        border-radius: 12px; padding: 16px 18px; margin-bottom: 10px;
+    }
+    summary {
+        cursor: pointer; font-weight: 600; font-size: 15px; list-style: none;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--muted); font-size: 20px; }
+    details[open] summary::after { content: "−"; }
+    details p, details ul { color: var(--muted); margin: 12px 0 0; font-size: 14px; }
+    details ul { padding-left: 18px; }
+
+    .grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;
+    }
+    .card {
+        background: var(--card); border: 1px solid var(--line);
+        border-radius: var(--radius); padding: 20px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    footer {
+        border-top: 1px solid var(--line);
+        padding: 28px 24px; margin-top: 32px;
+        color: var(--muted); font-size: 14px;
+    }
+    .foot-inner {
+        max-width: 1120px; margin: 0 auto;
+        display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .foot-inner a { color: var(--muted); margin-right: 16px; }
+    .foot-inner a:hover { color: var(--text); text-decoration: none; }
+
+    @media (max-width: 720px) {
+        .grid { grid-template-columns: 1fr; }
+        .contact { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+    <div class="nav-inner">
+        <a class="brand" href="index.html" style="color:inherit;">
+            <div class="brand-mark">M</div>
+            <span>MTAtlas</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html#features">Features</a>
+            <a href="index.html#privacy">Privacy</a>
+            <a href="support.html">Support</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <h1>MTAtlas Support</h1>
+    <p class="meta">We read every email and reply as quickly as we can.</p>
+
+    <p class="lead">
+        MTAtlas is built to be simple to use. If you ever get stuck, this page collects the answers to the most common questions and shows you exactly how to reach the developer.
+    </p>
+
+    <div class="contact">
+        <div>
+            <h3>Need a hand? Email us.</h3>
+            <p>Send screenshots, steps to reproduce, and your iOS version — it makes fixing things much faster.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:edible197@gmail.com">edible197@gmail.com</a>
+    </div>
+
+    <h2>Common questions</h2>
+
+    <details>
+        <summary>How do I create an account?</summary>
+        <p>You don't need to. MTAtlas has no login. Open the app and start adding accounts, transactions and investments right away.</p>
+    </details>
+
+    <details>
+        <summary>Where is my data stored?</summary>
+        <p>Everything is stored locally on your iPhone. The app does not sync to a server. If you reinstall or move to a new device, use the in-app JSON export and import to move your data over.</p>
+    </details>
+
+    <details>
+        <summary>How do I back up my data?</summary>
+        <ul>
+            <li>Open Settings inside the app.</li>
+            <li>Tap <strong>Export</strong>.</li>
+            <li>Choose <strong>JSON backup</strong> for a complete restore-friendly file, or <strong>CSV</strong> per data type for spreadsheets.</li>
+            <li>Save the file to Files, iCloud Drive, email it to yourself, or AirDrop it to another device.</li>
+        </ul>
+    </details>
+
+    <details>
+        <summary>How do I move my data to a new iPhone?</summary>
+        <ul>
+            <li>Export a JSON backup from your current device.</li>
+            <li>Install MTAtlas on the new iPhone.</li>
+            <li>Open Settings → Import and select the JSON file.</li>
+        </ul>
+    </details>
+
+    <details>
+        <summary>How do I attach a receipt to a transaction?</summary>
+        <ul>
+            <li>Open the transaction, then tap <strong>Receipt</strong>.</li>
+            <li>Choose <strong>Take photo</strong> to use the camera, or <strong>Choose from library</strong> to pick an existing image.</li>
+            <li>Tap <strong>Save</strong>. The receipt stays on your device and travels with the transaction.</li>
+        </ul>
+    </details>
+
+    <details>
+        <summary>Can I track multiple brokerage accounts?</summary>
+        <p>Yes. Add as many accounts as you like (checking, savings, credit card, brokerage, crypto wallet, cash, other). Each investment is assigned to a brokerage account so allocation and P&amp;L are per-portfolio.</p>
+    </details>
+
+    <details>
+        <summary>How do budgets work?</summary>
+        <p>Set a cap per category for a weekly, monthly or yearly period. As you log transactions, MTAtlas updates the remaining amount in real time and shows a progress bar so you can see how close you are to the limit.</p>
+    </details>
+
+    <details>
+        <summary>Can I use MTAtlas offline?</summary>
+        <p>Yes. The app is fully usable without an internet connection. There is no remote backend.</p>
+    </details>
+
+    <details>
+        <summary>How do I change the app theme?</summary>
+        <p>Open Settings → Appearance and choose <strong>System</strong>, <strong>Light</strong> or <strong>Dark</strong>. Dark mode is engineered to feel native on iOS.</p>
+    </details>
+
+    <details>
+        <summary>Does MTAtlas support my currency?</summary>
+        <p>MTAtlas uses your device locale for currency formatting and supports the major world currencies. Set the default currency under Settings.</p>
+    </details>
+
+    <details>
+        <summary>How do I report a bug or request a feature?</summary>
+        <p>Email <a href="mailto:edible197@gmail.com">edible197@gmail.com</a> with:</p>
+        <ul>
+            <li>A clear description of what happened vs. what you expected.</li>
+            <li>Steps to reproduce (as many as you can).</li>
+            <li>Screenshots or a short screen recording if applicable.</li>
+            <li>Your iOS version and iPhone model.</li>
+        </ul>
+    </details>
+
+    <details>
+        <summary>How do I delete my data?</summary>
+        <p>Inside the app: Settings → <strong>Reset</strong> → <strong>Erase all data</strong>. Or simply delete MTAtlas from your iPhone — your on-device data is removed with it.</p>
+    </details>
+
+    <h2>System requirements</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>iPhone</h3>
+            <p>iOS 16 or later. Optimized for the latest iPhone hardware and the standard Dynamic Type sizes.</p>
+        </div>
+        <div class="card">
+            <h3>Languages</h3>
+            <p>English. The app respects your device locale for dates, numbers and currency.</p>
+        </div>
+        <div class="card">
+            <h3>Permissions</h3>
+            <p>Camera and Photo library, requested when you attach a receipt. Optional and on-demand only.</p>
+        </div>
+        <div class="card">
+            <h3>Internet</h3>
+            <p>Not required. MTAtlas works fully offline and does not sync to a server.</p>
+        </div>
+    </div>
+
+    <h2>Still stuck?</h2>
+    <p>Email <a href="mailto:edible197@gmail.com">edible197@gmail.com</a> and we'll help.</p>
+</main>
+
+<footer>
+    <div class="foot-inner">
+        <div>© 2026 MTAtlas. All rights reserved.</div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="support.html">Support</a>
+            <a href="terms.html">Terms</a>
+            <a href="mailto:edible197@gmail.com">edible197@gmail.com</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
